@@ -10,24 +10,38 @@
 
 
 user_file = input("File to be checked (romeojuliet.txt): ").lower()
+user_letter_input = input("Letter to be counted: ")
 
-user_letter_lower = input("Letter to be counted: ").lower()
-user_letter_upper = user_letter_lower.upper()
+caps_sensitive = input("Caps sensitive? ").lower()
 
-# Reviewed: This list is completely unnecessary.
-user_letter = [user_letter_lower, user_letter_upper]
+if caps_sensitive[0] == 'y':
+    caps_sensitive = True
+else:
+    caps_sensitive = False
+
 
 with open(f"sources/{user_file}", "r") as file:
     file_read = file.read()
 
+def letter_counter(caps, letter):
+    if caps:
+        letter_count = file_read.count(letter)
+    else:
+        letter_upper = letter.upper()
+        letter_lower = letter.lower()
+        letter_count = file_read.count(letter_upper)
+        letter_count += file_read.count(letter_lower)
 
-# Reviewed: The pop() could have just been user_letter_lower and user_letter_upper.
-letter_count = file_read.count(user_letter.pop())
-letter_count += file_read.count(user_letter.pop())
+    return letter_count
+
+total_count = letter_counter(caps_sensitive, user_letter_input)
+
 
 with open(f"sources/{user_file}", "a") as file:
-    file.write(f"\nLetter: {user_letter_upper}{user_letter_lower}")
-    file.write(f"\nTotal Occurrences: {letter_count}")
+    if caps_sensitive:
+        file.write(f"\n Letter: {user_letter_input} - Total Occurrences: {total_count} ({"Lowercase" if user_letter_input.islower() else "Uppercase"})")
+    else:
+        file.write(f"\n Letter: {user_letter_input} - Total Occurrences: {total_count} (All)")
 
 with open(f"sources/{user_file}", "r") as file:
     file_read = file.read()
