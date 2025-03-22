@@ -41,36 +41,12 @@ while True:
         print("Invalid quantity!")
         continue
 
-
     user_item = input_split[1]
 
     update_groceries(user_item, user_quantity)
 
 
-
+print("Here is your shopping list:")
 print(groceries)
 
-
-# If grocery item already exists, update value
-
-
-# Slide 14
-# create an empty dictionary called groceries
-
-# create a loop to use until we break out by pressing enter
-
-    # lowercase grocery items will will be the key
-
-    # if the user presses enter break out
-    
-    # split the entered grocery name and value
-
-
-    # if no quantity or quantity is not a number, display an error message
-
-        # the quantity must be stored as an integer.
-
-    # find or add the key and the value to the dictionary 
-  
-# print out the groceries
 
