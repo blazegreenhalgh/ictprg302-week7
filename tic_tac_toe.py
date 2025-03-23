@@ -81,8 +81,6 @@ def is_winner(x_or_o, board):
             return True
     return False
 
-def play_again():
-
 
 def switch(current, p1, p2):
     if current == p1:
@@ -95,12 +93,31 @@ def set_position(x_or_o, board, coords):
     row, col = coords
     board[row][col] = x_or_o.upper()
 
+def play_again():
+    if input("Play again? ").lower()[0] == 'y':
+        return True
+    else:
+        return False
+
+def record_scores(winner, p1, p2):
+    if winner == p1["name"]:
+        p1["wins"] += 1
+        p2["losses"] += 1
+    elif winner != p1["name"] and winner != p2["name"]:
+        p1["draws"] += 1
+        p2["draws"] += 1
+    else:
+        p1["losses"] += 1
+        p2["wins"] += 1
+
+
+
 
 def play():
-    # DONE TODO: Set player names in the players dictionary
-    # DONE TODO: Initialize current_player from the dictionary
-    # DONE TODO: Get the player name from the dictionary
-    # DONE TODO: Implement switching players using the players dictionary
+    # DONE : Set player names in the players dictionary
+    # DONE : Initialize current_player from the dictionary
+    # DONE : Get the player name from the dictionary
+    # DONE : Implement switching players using the players dictionary
     player_x = players["x_player"]
     player_o = players["o_player"]
 
@@ -120,8 +137,8 @@ def play():
     while True:
         print(f"{current_player} make your move:")
         print_board(board)
-        move = input("Enter move as row, col: ")
-        row, col = move.replace(' ', '').split(',')
+        move = input("Enter move as row col: ")
+        row, col = move.split(' ')
         row, col = translation["rows"][row], translation["cols"][col]  # TODO: populate translation dict - otherwise this fails
         print(row, col)
 
@@ -132,18 +149,35 @@ def play():
             set_position(symbol, board, (row, col))
 
         if is_winner(symbol, board):
-            print(f"Well done!\nPlayer {current_player} wins!")
+            print(f"Well done!\n{current_player} wins!")
+            record_scores(current_player, player_x, player_o)
+            print(players)
+            print(current_player)
+            print(player_x)
+            print(player_o)
+            if play_again():
+                play()
+            else:
+                print("Thanks for playing!")
             break
 
         if not has_free_spaces(board):
             print("It is a draw!")
+            record_scores(current_player, player_x, player_o)
+
+            if play_again():
+                play()
+            else:
+                print("Thanks for playing!")
             break
 
         current_player = switch(current_player, player_x["name"], player_o["name"])
         symbol = switch(symbol, player_x["symbol"], player_o["symbol"])
 
-    # TODO: add ability to play again
-    # TODO: keep tally of wins, losses, and draws in the dictionary
+
+
+    # DONE: add ability to play again
+    # DONE: keep tally of wins, losses, and draws in the dictionary
     # TODO: print the dictionary as a csv like so:
     # name,symbol,wins,draws,losses
     # fred,X,10,5,3
