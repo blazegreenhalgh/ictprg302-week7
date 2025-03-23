@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd35484e-95c9-49d4-8e01-887394943113" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/tic_tac_toe.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sources/players.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sources/tic_tac_scores.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tic_tac_toe.py" beforeDir="false" afterPath="$PROJECT_DIR$/tic_tac_toe.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +46,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/sources" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="ictprg302-week7" />
@@ -90,7 +95,8 @@
       <workItem from="1742624066725" duration="236000" />
       <workItem from="1742624303203" duration="605000" />
       <workItem from="1742624914617" duration="6025000" />
-      <workItem from="1742649698088" duration="3431000" />
+      <workItem from="1742649698088" duration="4524000" />
+      <workItem from="1742701617060" duration="3936000" />
     </task>
     <servers />
   </component>
@@ -102,7 +108,7 @@
     <SUITE FILE_PATH="coverage/ictprg302_week7$grocery_activity_pseudo.coverage" NAME="grocery_activity_pseudo Coverage Results" MODIFIED="1742626957516" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ictprg302_week7$write_files.coverage" NAME="write_files Coverage Results" MODIFIED="1742628189441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/ictprg302_week7$write_files_count_chars.coverage" NAME="write_files_count_chars Coverage Results" MODIFIED="1742649750786" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ictprg302_week7$main.coverage" NAME="main Coverage Results" MODIFIED="1742631900735" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ictprg302_week7$tic_tac_toe.coverage" NAME="tic_tac_toe Coverage Results" MODIFIED="1742700267230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ictprg302_week7$main.coverage" NAME="main Coverage Results" MODIFIED="1742702243181" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ictprg302_week7$tic_tac_toe.coverage" NAME="tic_tac_toe Coverage Results" MODIFIED="1742707190507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

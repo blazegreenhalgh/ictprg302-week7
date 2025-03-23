@@ -8,7 +8,7 @@ Users shall be presented with this board:
 (1) For a given input, say "1, a", use a translation
 dictionary to translate to coordinates (say 0, 0)
 """
-translation = {"cols": {"a": 0, "b": 1, "c": 2},  # TODO: Complete me
+translation = {"cols": {"a": 0, "b": 1, "c": 2},  # DONE: Complete me
                "rows": {"1": 0, "2": 1, "3": 2}
                }
 
@@ -22,7 +22,7 @@ players = {"x_player": {"name": '',
                         "wins": 0,
                         "draws": 0,
                         "losses": 0},
-           "current_player": ''}  # TODO: Use me!
+           "current_player": ''}  # DONE: Use me!
 
 WINS = [  # lists all win conditions for 3 x 3 board
     [(0, 0), (1, 1), (2, 2)],  # diag 1
@@ -37,6 +37,7 @@ WINS = [  # lists all win conditions for 3 x 3 board
 
 
 # Optional task (challenging): generate the above list dynamically using for loops.
+# no
 
 
 def create_board():
@@ -52,12 +53,15 @@ def print_board(board):
 
 
 def translate(row, col):
-    """Returns corresponding position from dictionary"""
-    # TODO: Finish this function so it returns the correct row, col
+    # TODO I cant understand why putting this into a separate function is necessary?
+    # DONE: Finish this function so it returns the correct row, col
     # For example:
     # >>> translate('1', 'a')
     # (0, 0)
-    return ...
+    translated_row = translation["rows"][row]
+    translated_col = translation["cols"][col]
+
+    return translated_row, translated_col
 
 
 def has_free_spaces(board):
@@ -99,7 +103,7 @@ def play_again():
     else:
         return False
 
-def record_scores(winner, p1, p2):
+def track_scores(winner, p1, p2):
     if winner == p1["name"]:
         p1["wins"] += 1
         p2["losses"] += 1
@@ -111,6 +115,17 @@ def record_scores(winner, p1, p2):
         p2["wins"] += 1
 
 
+def record_scores(p1, p2):
+    with open("sources/tic_tac_scores.json", "a") as file:
+        # Writing to JSON (bonus says to write the *dictionary* to a JSON file)
+        file.write(f"\n{p1}")
+        file.write(f"\n{p2}")
+
+        # Writing to CSV (unpacking values and formatting nicely - I'm assuming in a JSON file, you don't want this?)
+        # p1_name, p1_symbol, p1_wins, p1_draws, p1_losses = p1.values()
+        # p2_name, p2_symbol, p2_wins, p2_draws, p2_losses = p2.values()
+        # file.write(f"\nName: {p1_name}, Symbol: {p1_symbol}, Wins: {p1_wins}, Draws: {p1_draws}, Losses: {p1_losses}")
+        # file.write(f"\nName: {p2_name}, Symbol: {p2_symbol}, Wins: {p2_wins}, Draws: {p2_draws}, Losses: {p2_losses}")
 
 
 def play():
@@ -139,8 +154,7 @@ def play():
         print_board(board)
         move = input("Enter move as row col: ")
         row, col = move.split(' ')
-        row, col = translation["rows"][row], translation["cols"][col]  # TODO: populate translation dict - otherwise this fails
-        print(row, col)
+        row, col = translation["rows"][row], translation["cols"][col]  # DONE: populate translation dict - otherwise this fails
 
         if is_occupied(board, (row, col)):
             print("You must pick an unused space")
@@ -150,25 +164,23 @@ def play():
 
         if is_winner(symbol, board):
             print(f"Well done!\n{current_player} wins!")
-            record_scores(current_player, player_x, player_o)
-            print(players)
-            print(current_player)
-            print(player_x)
-            print(player_o)
+            track_scores(current_player, player_x, player_o)
             if play_again():
                 play()
             else:
-                print("Thanks for playing!")
+                print("Thanks for playing! Scores recorded in sources/tic_tac_scores.json")
+                record_scores(player_x, player_o)
             break
 
         if not has_free_spaces(board):
             print("It is a draw!")
-            record_scores(current_player, player_x, player_o)
+            track_scores(current_player, player_x, player_o)
 
             if play_again():
                 play()
             else:
-                print("Thanks for playing!")
+                print("Thanks for playing! Scores recorded in sources/tic_tac_scores.json")
+                record_scores(player_x, player_o)
             break
 
         current_player = switch(current_player, player_x["name"], player_o["name"])
@@ -178,7 +190,7 @@ def play():
 
     # DONE: add ability to play again
     # DONE: keep tally of wins, losses, and draws in the dictionary
-    # TODO: print the dictionary as a csv like so:
+    # DONE: print the dictionary as a csv like so:
     # name,symbol,wins,draws,losses
     # fred,X,10,5,3
     # wilma,O,5,10,3
